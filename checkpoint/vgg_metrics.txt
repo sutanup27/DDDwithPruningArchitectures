@@ -1,0 +1,41 @@
+backbone.conv0.weight torch.Size([32, 3, 3, 3])
+backbone.bn0.weight torch.Size([32])
+backbone.bn0.bias torch.Size([32])
+backbone.conv1.weight torch.Size([32, 32, 3, 3])
+backbone.bn1.weight torch.Size([32])
+backbone.bn1.bias torch.Size([32])
+backbone.conv2.weight torch.Size([64, 32, 3, 3])
+backbone.bn2.weight torch.Size([64])
+backbone.bn2.bias torch.Size([64])
+backbone.conv3.weight torch.Size([64, 64, 3, 3])
+backbone.bn3.weight torch.Size([64])
+backbone.bn3.bias torch.Size([64])
+backbone.conv4.weight torch.Size([128, 64, 3, 3])
+backbone.bn4.weight torch.Size([128])
+backbone.bn4.bias torch.Size([128])
+backbone.conv5.weight torch.Size([128, 128, 3, 3])
+backbone.bn5.weight torch.Size([128])
+backbone.bn5.bias torch.Size([128])
+backbone.conv6.weight torch.Size([256, 128, 3, 3])
+backbone.bn6.weight torch.Size([256])
+backbone.bn6.bias torch.Size([256])
+backbone.conv7.weight torch.Size([256, 256, 3, 3])
+backbone.bn7.weight torch.Size([256])
+backbone.bn7.bias torch.Size([256])
+backbone.conv8.weight torch.Size([512, 256, 3, 3])
+backbone.bn8.weight torch.Size([512])
+backbone.bn8.bias torch.Size([512])
+backbone.conv9.weight torch.Size([512, 512, 3, 3])
+backbone.bn9.weight torch.Size([512])
+backbone.bn9.bias torch.Size([512])
+fc2.weight torch.Size([2, 512])
+fc2.bias torch.Size([2])
+accuracy: 99.0929946899414
+macs: 419201536
+sparsity: 0.0
+model size:17.99MB
+Precision: 0.9910, Recall: 0.9909, F1: 0.9909
+[[8244  102]
+ [  52 8581]]
+CPU latency: 0.008260138034820556
+GPU latency: 0.00175947904586792
