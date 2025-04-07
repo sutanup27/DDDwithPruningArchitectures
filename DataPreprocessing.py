@@ -25,6 +25,14 @@ from typing import Union,List
  
 path='../mrleyedataset'
 
+def set_seed(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)  # If using multi-GPU
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False  # Slows training but ensures reproducibility
+
 # Define separate transforms
 train_transform = transforms.Compose([
     transforms.Resize((80, 80)),  
@@ -42,18 +50,7 @@ test_transform = transforms.Compose([
     transforms.ToTensor(),  
     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])  
 ])
-
-# Load full dataset WITHOUT transform
-full_dataset = ImageFolder(root=path)  
-
-# Split dataset indices
-train_size = int(0.80 * len(full_dataset))
-test_size = len(full_dataset) - train_size
-train_indices, test_indices = random_split(full_dataset, [train_size, test_size])
-
-# Create separate datasets with different transforms
-train_dataset = ImageFolder(root=path, transform=train_transform)  
-test_dataset = ImageFolder(root=path, transform=test_transform)  
+ 
 
 def get_datasets(Path,train_transform=train_transform,test_transform=test_transform,train_test_val_pecentage=[0.80, 0.20]):
     image_dataset= ImageFolder(root=Path)
@@ -75,6 +72,7 @@ def get_datasets(Path,train_transform=train_transform,test_transform=test_transf
 
 
 def get_dataloaders(Path,train_transform=train_transform,test_transform=test_transform, train_test_val_pecentage=[0.80, 0.20], batch_size=32):
+    set_seed(0)
     train_dataset,test_dataset=get_datasets(Path, train_transform, test_transform, train_test_val_pecentage)
     train_dataloader=DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     test_dataloader= DataLoader(test_dataset, batch_size=batch_size, shuffle=False)

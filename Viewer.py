@@ -48,7 +48,7 @@ def plot_weight_distribution(model, bins=256, count_nonzero_only=False):
     row= round(layer_count/col)
     if col*row<layer_count:
         col=col+1
-    fig, axes = plt.subplots(row,col, figsize=(40,30))
+    fig, axes = plt.subplots(row,col, figsize=(40,40),constrained_layout=True)
     axes = axes.ravel()
     plot_index = 0
     for name, param in model.named_parameters():
@@ -66,6 +66,6 @@ def plot_weight_distribution(model, bins=256, count_nonzero_only=False):
             ax.set_ylabel('density')
             plot_index += 1
     fig.suptitle('Histogram of Weights')
-    fig.tight_layout()
-    fig.subplots_adjust(top=0.925)
+    fig.tight_layout(h_pad=15,w_pad=5)
+    fig.subplots_adjust(top=0.925,left=0.05, bottom=0.05)
     plt.show()

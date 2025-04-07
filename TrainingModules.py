@@ -120,17 +120,26 @@ def Training( model, train_dataloader, test_dataloader, criterion, optimizer, nu
     return best_model, losses, test_losses, accs
 
 
-def TrainingPrunned(pruned_model,train_dataloader,test_dataloader,criterion, optimizer, pruner,scheduler=None,num_finetune_epochs=5):
+def TrainingPrunned(pruned_model,train_dataloader,test_dataloader,criterion, optimizer, pruner,scheduler=None,num_finetune_epochs=5,isCallback=True):
+    accuracies=[]
+    if scheduler:
+       scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, num_finetune_epochs)
     best_accuracy = 0
+    best_model=None
     print(f'Finetuning Fine-grained Pruned Sparse Model')
     for epoch in range(num_finetune_epochs):
         # At the end of each train iteration, we have to apply the pruning mask
         #    to keep the model sparse during the training
-        train_loss=train(pruned_model, train_dataloader, criterion, optimizer, scheduler,
-              callbacks=[lambda: pruner.apply(pruned_model)])
+        if isCallback:
+           callbacks=[lambda: pruner.apply(pruned_model)]
+        else:
+           callbacks=None
+        train_loss=train(pruned_model, train_dataloader, criterion, optimizer, scheduler,callbacks=callbacks )
         test_acc ,test_loss = evaluate(pruned_model, test_dataloader,criterion)
+        accuracies.append(test_acc)
         is_best = test_acc > best_accuracy
         if is_best:
             best_accuracy = test_acc
+            best_model=copy.deepcopy(pruned_model)
         print(f'    Epoch {epoch+1} Test accuracy:{test_acc:.2f}% / Best Accuracy: {best_accuracy:.2f}%, train loss: {train_loss:.4f}, test loss {test_loss:.4f}')
-    return best_accuracy,pruned_model
+    return best_accuracy, best_model, accuracies
