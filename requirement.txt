@@ -1,0 +1,9 @@
+Pygame
+tqdm
+torchprofile
+opencv-python
+matplotlib
+torch-vision
+torch
+scikit-learn
+numpy
