@@ -20,14 +20,40 @@ The system captures live video from a webcam, detects the driver’s face and ey
 
 ```
 project-root/
-├── main.py                  # Main detection loop (run this file)
-├── VGG.py                   # CNN model definition
-├── TrainingModules.py       # Prediction function
-├── DataPreprocessing.py     # Image transforms (e.g., test_transform)
-├── checkpoint/              # Folder for saved model weights
-│   └── vgg.16.pth           # Trained model
-├── alarm.wav                # Alarm sound played on drowsiness
-├── README.md                # This file
+├── main.py                          # Main detection loop (run this file)
+├── VGG.py                           # CNN model definition (VGG-based architecture)
+├── TrainingModules.py               # Training, validation, and prediction functions
+├── DataPreprocessing.py             # Image transforms and dataset preparation
+├── DataPreview.py                   # Visualization of dataset images and metadata
+├── DlibTest.py                      # Test script using Dlib for facial landmarks
+├── Model_Evaluation.py              # Evaluation metrics and reporting
+├── PruneEvaluator.py                # Evaluate pruned models
+├── PruneTest.py                     # Testing pruned CNNs
+├── PruneTrain.py                    # Training loop for pruned CNNs
+├── PruneViewer.py                   # Visualizer for pruned architectures and stats
+├── Test.py                          # Custom test cases for quick validation
+├── Train.py                         # General training loop
+├── Util.py                         # Helper functions (utilities)
+├── Viewer.py                        # Output and performance visualization tools
+├── DDD.ipynb                        # Jupyter notebook for interactive experiments
+├── alarm.wav                        # Alarm sound played on drowsiness detection
+├── requirement.txt                  # Required Python libraries
+├── shape_predictor_68_face_landmarks.dat  # Dlib model for facial landmarks
+├── README.md                        # Project documentation and instructions
+├── .gitignore                       # Git ignore rules
+├── checkpoint/                      # Folder for saved model checkpoints and results
+│   ├── accuracies.pkl               # Pickled accuracy scores
+│   ├── sparsities.pkl               # Pickled sparsity metrics
+│   ├── sensitivity_scan.png         # Plot showing sensitivity scan
+│   ├── vgg_metrics.txt              # Metrics summary for VGG models
+│   ├── vgg_mrl_99.0929946899414.pth         # Saved VGG model with 99.09% accuracy
+│   ├── vgg_mrl_CP_98.90.txt                  # CP model metrics
+│   ├── vgg_mrl_CP_98.90452575683594.pth      # Saved CP model weights
+│   ├── vgg_mrl_fgp_99.039.txt                # FGP model metrics
+│   ├── vgg_mrl_fgp_99.03999328613281.pth     # Saved FGP model weights
+│   └── output/                      # Subdirectory for generated outputs
+│       └── (your generated plots, logs, etc.)
+
 ```
 
 ---
