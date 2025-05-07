@@ -76,7 +76,7 @@ project-root/
 ### ✅ Install via pip
 
 ```bash
-pip install torch torchvision opencv-python pygame matplotlib tqdm pillow scikit-learn torchprofile
+pip install -r requirement.txt
 ```
 
 ---
