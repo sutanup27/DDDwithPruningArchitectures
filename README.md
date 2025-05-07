@@ -1,8 +1,10 @@
 # 💤 Driver Drowsiness Detection System (CNN + OpenCV)
 
-This project implements a **real-time driver drowsiness detection system** using a lightweight Convolutional Neural Network (VGG-based), classical computer vision methods (Haar cascades), and PyTorch for classification.
+This project implements a real-time driver drowsiness detection system using a lightweight Convolutional Neural Network (VGG-based), Dlib's facial landmark detection, and PyTorch for classification.
 
-The system captures live video from a webcam, detects the driver’s face and eye regions, and classifies the eye state (open/closed). If the eyes remain closed for too long, it triggers an audible alarm.
+The system captures live video from a webcam, detects the driver’s face and extracts eye regions using Dlib’s 68-point facial landmark predictor, and classifies the eye state (open/closed). If the eyes remain closed for too long, it triggers an audible alarm.
+
+
 
 ---
 
