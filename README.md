@@ -1,4 +1,4 @@
-# 💤 Driver Drowsiness Detection System (CNN + OpenCV)
+# 💤 Driver Drowsiness Detection System (CNN + OpenCV + Architecture Pruning)
 
 This project implements a real-time driver drowsiness detection system using a lightweight Convolutional Neural Network (VGG-based), Dlib's facial landmark detection, and PyTorch for classification. Utilised pruning techniques to reduce the model's size and performance in real-time.
 
