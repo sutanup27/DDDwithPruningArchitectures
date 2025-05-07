@@ -77,6 +77,8 @@ project-root/
 
 ```bash
 pip install -r requirement.txt
+pip install cmake
+pip install dlib
 ```
 
 ---
