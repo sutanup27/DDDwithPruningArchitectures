@@ -13,19 +13,6 @@ from TrainingModules import evaluate
 from VGG import VGG
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-sparsity_dict = {
-'backbone.conv0.weight': 0.4,
-'backbone.conv1.weight': 0.90,
-'backbone.conv2.weight': 0.80,
-'backbone.conv3.weight': 0.6,
-'backbone.conv4.weight': 0.9,
-'backbone.conv5.weight': 0.9,
-'backbone.conv6.weight': 0.8,
-'backbone.conv7.weight': 0.95,
-'backbone.conv8.weight': 0.95,
-'backbone.conv9.weight': 0.97,
-'fc2.weight': 0.95,
-}
 path='../mrleyedataset'
 model=VGG()
 model_path='vgg_mrl_99.09.pth'

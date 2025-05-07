@@ -46,7 +46,6 @@ e_status=['Eye close','Eye open']
 for l in [0,1]:
     for i in range(2):
         image=samples['Before'][l][i]
-        print(image.shape)
         ax[i,l].imshow(image.permute(1, 2, 0),cmap='gray')
         ax[i,l].set_title(f"Label:{e_status[l]}", fontsize=50)
         ax[i,l].axis("off")
